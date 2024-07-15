@@ -11,8 +11,10 @@
 
 ## Future things to look at
 
-* [] Relying on Gateway API resources with net-gateway-api instead of net-istio
-* [] Check if we can move the gateways, OCP routes and so on to our own namespace `knative-serving-ingress` instead of `istio-system`
+* [ ] Check if we can move the gateways, OCP routes and so on to our own namespace `knative-serving-ingress` instead of `istio-system`
+* [ ] Enable mTLS set-up
+* [ ] Make all Serverless-Operator tests pass again (Serving only)
+* [ ] Mid-term: Relying on Gateway API resources with net-gateway-api instead of net-istio
 
 ## Installation on OpenShift
 
