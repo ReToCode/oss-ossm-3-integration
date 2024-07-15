@@ -3,6 +3,10 @@ kind: Istio
 metadata:
   name: istio-system
 spec:
+  values:
+    meshConfig:
+      defaultConfig:
+        terminationDrainDuration: 35s # needed to make QP stop hook work
   updateStrategy:
     inactiveRevisionDeletionGracePeriodSeconds: 30
     type: InPlace

@@ -11,9 +11,9 @@
 
 ## Future things to look at
 
+* [x] Enable mTLS set-up
 * [ ] Check if we can move the gateways, OCP routes and so on to our own namespace `knative-serving-ingress` instead of `istio-system`
-* [ ] Enable mTLS set-up
-* [ ] Make all Serverless-Operator tests pass again (Serving only)
+* [ ] Make all Serverless-Operator tests pass (Serving only)
 * [ ] Mid-term: Relying on Gateway API resources with net-gateway-api instead of net-istio
 
 ## Installation on OpenShift
@@ -24,6 +24,7 @@ oc new-project istio-cni
 
 # Install the operator
 oc apply -f yaml/sail-operator.yaml
+# wait for the operator to be installed and ready
 
 # Installing istio + CNI
 oc apply -f yaml/istio.yaml
@@ -33,6 +34,7 @@ oc apply -f yaml/istio-cni.yaml
 ```bash
 # Installing OSS
 oc apply -f yaml/serverless-operator.yaml
+# wait for the operator to be installed and ready
 
 # Creating a Knative istio gateway pod
 # TODO: ignoring for now
@@ -40,7 +42,11 @@ oc apply -f yaml/serverless-operator.yaml
 oc apply -f  yaml/gateway-deploy.yaml
 
 # Creating Knative istio gateways
+oc new-project knative-serving
 oc apply -f yaml/gateways-knative.yaml
+
+# Enforce mTLS
+oc apply -f yaml/peer-authentication-mesh-mtls.yaml
 
 # Installing Knative Serving
 oc apply -f yaml/knativeserving.yaml
@@ -53,7 +59,7 @@ oc apply -f yaml/ksvc.yaml
 ```
 
 ```bash
-curl -k https://svc-always-scaled-demo.apps.ci-ln-pjfqfg2-76ef8.origin-ci-int-aws.dev.rhcloud.com
+curl -k https://svc-always-scaled-demo.apps.ci-ln-ggnggm2-76ef8.origin-ci-int-aws.dev.rhcloud.com
 ```
 ```text
 Hello Serverless!
