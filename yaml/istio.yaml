@@ -1,0 +1,10 @@
+apiVersion: operator.istio.io/v1alpha1
+kind: Istio
+metadata:
+  name: istio-system
+spec:
+  updateStrategy:
+    inactiveRevisionDeletionGracePeriodSeconds: 30
+    type: InPlace
+  namespace: istio-system
+  version: v1.21.0

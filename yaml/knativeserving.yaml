@@ -1,0 +1,30 @@
+apiVersion: operator.knative.dev/v1beta1
+kind: KnativeServing
+metadata:
+  name: knative-serving
+  namespace: knative-serving
+  annotations:
+    serverless.openshift.io/disable-istio-net-policies-generation: "true"
+spec:
+  config:
+    istio: # point these to our own specific gateways now
+      gateway.knative-serving.knative-ingress-gateway: knative-istio-ingressgateway.istio-system.svc.cluster.local
+      local-gateway.knative-serving.knative-local-gateway: knative-local-gateway.istio-system.svc.cluster.local
+  deployments:
+    - name: activator
+      labels:
+        # see comments in gateway-deploy.yaml
+        # sidecar.istio.io/inject: "true"
+        istio.io/rev: istio-system
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "true"
+    - name: autoscaler
+      labels:
+        # see comments in gateway-deploy.yaml
+        # sidecar.istio.io/inject: "true"
+        istio.io/rev: istio-system
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "true"
+  ingress:
+    istio:
+      enabled: true
