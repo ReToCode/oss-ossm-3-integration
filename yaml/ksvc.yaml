@@ -13,8 +13,10 @@ metadata:
 spec:
   template:
     metadata:
+      labels:
+        # see comments in gateway-deploy.yaml
+        istio.io/rev: istio-system
       annotations:
-        sidecar.istio.io/inject: "true"
         sidecar.istio.io/rewriteAppHTTPProbers: "true"
     spec:
       containers:
