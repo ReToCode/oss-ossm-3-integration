@@ -5,7 +5,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: knative-istio-ingressgateway
-  namespace: istio-system # for now
+  namespace: knative-serving-ingress
 spec:
   type: ClusterIP
   selector:
@@ -45,7 +45,7 @@ data:
 kind: Secret
 metadata:
   name: wildcard-certs
-  namespace: istio-system # for now
+  namespace: knative-serving-ingress
 type: kubernetes.io/tls
 ---
 ###########################################################
@@ -57,7 +57,7 @@ metadata:
   labels:
     experimental.istio.io/disable-gateway-port-translation: "true"
   name: knative-local-gateway
-  namespace: istio-system # for now
+  namespace: knative-serving-ingress
 spec:
   ports:
     - name: http2

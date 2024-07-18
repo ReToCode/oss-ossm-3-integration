@@ -8,8 +8,8 @@ metadata:
 spec:
   config:
     istio: # point these to our own specific gateways now
-      gateway.knative-serving.knative-ingress-gateway: knative-istio-ingressgateway.istio-system.svc.cluster.local
-      local-gateway.knative-serving.knative-local-gateway: knative-local-gateway.istio-system.svc.cluster.local
+      gateway.knative-serving.knative-ingress-gateway: knative-istio-ingressgateway.knative-serving-ingress.svc.cluster.local
+      local-gateway.knative-serving.knative-local-gateway: knative-local-gateway.knative-serving-ingress.svc.cluster.local
   deployments:
     - name: activator
       labels:
