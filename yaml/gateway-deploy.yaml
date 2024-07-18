@@ -52,16 +52,3 @@ subjects:
   - kind: ServiceAccount
     name: default
 ---
-#apiVersion: networking.k8s.io/v1
-#kind: NetworkPolicy
-#metadata:
-#  name: gatewayingress
-#  namespace: knative-serving-ingress
-#spec:
-#  podSelector:
-#    matchLabels:
-#      knative: ingressgateway
-#  ingress:
-#    - {}
-#  policyTypes:
-#  - Ingress
