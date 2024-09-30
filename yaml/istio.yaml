@@ -1,7 +1,7 @@
 apiVersion: operator.istio.io/v1alpha1
 kind: Istio
 metadata:
-  name: istio-system
+  name: default # use default to get the "unrevisioned" installation and make the `istio.sidecar.inject` work
 spec:
   values:
     meshConfig:
