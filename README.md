@@ -14,7 +14,10 @@
 * [x] Enable mTLS set-up
 * [x] Check if we can move the gateways, OCP routes and so on to our own namespace `knative-serving-ingress` instead of `istio-system`
 * [ ] Make all Serverless-Operator tests pass (Serving only)
-* [ ] Mid-term: Relying on Gateway API resources with net-gateway-api instead of net-istio
+* [ ] Make all Serverless-Operator tests pass (Eventing only)
+* [ ] Make all Serverless-Operator tests pass (Serving+Eventing)
+* [ ] For the future: Relying on Gateway API resources with net-gateway-api instead of net-istio
+* [x] Update all usages of istio-inject annotation to the label, as per [docs](https://istio.io/latest/docs/reference/config/analysis/ist0135/) 
 
 ## Installation on OpenShift
 
